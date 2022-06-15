@@ -29,3 +29,4 @@ Mcd_norwich %>%
     addMarkers( icon = Mcdlogo, popup = Mcd_norwich$name)
 
 ```
+  
