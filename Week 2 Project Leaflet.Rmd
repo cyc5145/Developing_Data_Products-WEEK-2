@@ -1,0 +1,31 @@
+---
+title: "McDonald's in Norwich"
+author: "John Chen"
+date: '2022-06-15'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+library(leaflet)
+Mcdlogo <- makeIcon(
+    iconUrl = "https://www.freepnglogos.com/uploads/mcdonalds-png-logo/mcdonalds-png-logo-simple-m-1.png",
+    iconWidth = 50*215/230, iconHeight = 50,
+    iconAnchorX = 50*215/230/2, iconAnchorY = 30
+)
+
+Mcd_norwich <- data.frame(name = c("Chantry Place Shopping", "Haymarket", "Barrett Rd", "Boundary Rd", "Delft Way", "Hethersett", "Longwater"),
+lat = c(52.62591,52.6271956,52.6103433,52.65456, 52.66803, 52.60371, 52.65149),
+lng = c(1.29086, 1.2927065, 1.2916847, 1.26925, 1.27204, 1.22248, 1.18556)
+)
+
+Mcd_norwich %>%
+    leaflet() %>%
+    addTiles() %>%
+    addMarkers( icon = Mcdlogo, popup = Mcd_norwich$name)
+
+```
